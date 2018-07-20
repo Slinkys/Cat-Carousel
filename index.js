@@ -10,21 +10,21 @@ $("button").on('click', function(event) {
     console.log("A button was clicked");
 });
 Inside this function display the image that the user selected 
-use .css to set img element to hero class 
-Example: 
-$('.js-hide-it').addClass('hidden');
-also update alt attribute 
+Also update alt attribute 
 */
 
 'use strict';
 /* global $ */
-//$(function(){ }) vs function() { }?
 function handleSelectImg () {
   $('.thumbnail').on('click', function(event) {
-    $('.thumbnail').addClass('hero img');
-    $('.img').addClass('hero img');
-    $('alt').addClass('hero img');
-    
+
+    const imageSelected = $(this).find('img').attr('src');
+    const imageAlt = $(this).find('img').attr('alt');
+    console.log(imageSelected, imageAlt);
+    const destinationImg = $('.hero').find('img');
+    destinationImg.attr('src', imageSelected);
+    destinationImg.attr('alt', imageAlt);
+
   });
 }
 $(handleSelectImg);
